@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/controller/bloc_observer/bloc_observer.dart';
 import 'package:news_app/controller/buisness_bloc/buisness_cubit.dart';
 import 'package:news_app/controller/home_bloc/home_bloc.dart';
+import 'package:news_app/controller/science_bloc.dart/science_cubit.dart';
+import 'package:news_app/controller/sports_bloc.dart/sport_cubit.dart';
+import 'package:news_app/model/dio_helper/dio_helper.dart';
 import 'package:news_app/view/home/home_page.dart';
 
 void main() {
+  BlocOverrides.runZoned(
+    () {
+      HomeCubit();
+      BuisnessCubit();
+    },
+    blocObserver: NewsObserver(),
+  );
+  DioHelper.init();
   runApp(const MyApp());
 }
 
@@ -17,12 +29,15 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomeCubit()),
-        BlocProvider(create: (context) => BuisnessCubit()),
+        BlocProvider(create: (context) => BuisnessCubit()..getBuisnessNews()),
+        BlocProvider(create: (context) => ScienceCubit()..getScienceNews()),
+        BlocProvider(create: ((context) => SportCubit()..getSportNews()))
       ],
       child: LayoutBuilder(builder: (context, constr) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'News App',
+          themeMode: ThemeMode.system,
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -43,11 +58,11 @@ class MyApp extends StatelessWidget {
                 ),
                 backgroundColor: Colors.white,
                 elevation: 0,
-                systemOverlayStyle: SystemUiOverlayStyle(
+                systemOverlayStyle: const SystemUiOverlayStyle(
                   statusBarColor: Colors.white,
                   statusBarIconBrightness: Brightness.dark,
                 )),
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.deepOrange,
           ),
           home: const MyHomePage(),
         );
