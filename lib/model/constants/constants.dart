@@ -13,3 +13,7 @@ const String conurlToImage = 'urlToImage';
 const String conpublishedAt = 'publishedAt';
 const String concontent = 'content';
 const String conPubloshedTime = 'publishedAt';
+const String conlightTheme = 'light';
+const String condarkTheme = 'dark';
+const String consystemTheme = 'system';
+const String conthemeKey = 'themeMode';

@@ -37,6 +37,7 @@ dependencies:
   flutter_bloc:
   dio:
   localization:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

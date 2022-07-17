@@ -20,14 +20,19 @@ class MyHomePage extends StatelessWidget {
                   IconButton(
                     padding:
                         EdgeInsetsDirectional.only(end: size.maxWidth * 0.04),
-                    onPressed: () {},
+                    onPressed: () {
+                      cubit.currentIndex = 4;
+                    },
                     icon: const Icon(
                       Icons.search,
                     ),
-                  )
+                  ),
+                  cubit.changeTheme(context),
                 ],
               ),
               bottomNavigationBar: BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                // backgroundColor: Colors.black,
                 currentIndex: cubit.currentIndex,
                 items: const [
                   BottomNavigationBarItem(
@@ -44,7 +49,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.settings),
-                    label: 'Settings',
+                    label: 'Search',
                   ),
                 ],
                 onTap: (index) {

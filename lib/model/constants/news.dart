@@ -24,51 +24,48 @@ class News extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: SizedBox(
-                      height: constr.maxHeight * 0.2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              newsData![index][contitle],
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 4,
-                              style: TextStyle(
-                                fontSize: constr.maxHeight * 0.035,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textDirection: TextDirection.rtl,
-                            ),
-                          ),
-                          Text(
-                            newsData![index][conPubloshedTime],
-                            overflow: TextOverflow.ellipsis,
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                              fontSize: constr.maxHeight * 0.02,
-                              color: Colors.grey,
-
-                              //fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                    flex: 1,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                        constr.maxWidth * 0.02,
                       ),
-                    ),
-                  ),
-                  SizedBox(width: constr.maxWidth * 0.02),
-                  Expanded(
-                    child: SizedBox(
                       child: newsData![index][conurlToImage] != null
                           ? Image.network(
                               newsData![index][conurlToImage]!,
-                              fit: BoxFit.fill,
+                              fit: BoxFit.cover,
                             )
                           : Image.network(
                               'http://www.nftitalia.com/wp-content/uploads/2017/07/news-1-1600x429.jpg',
                               fit: BoxFit.contain,
                             ),
+                    ),
+                  ),
+                  SizedBox(width: constr.maxWidth * 0.04),
+                  Expanded(
+                    flex: 2,
+                    child: SizedBox(
+                      height: constr.maxHeight * 0.21,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              newsData![index][contitle],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
+                              style: Theme.of(context).textTheme.bodyText1,
+                              // textDirection: TextDirection.rtl,
+                            ),
+                          ),
+                          Text(
+                            newsData![index][conPubloshedTime],
+                            overflow: TextOverflow.ellipsis,
+                            // textDirection: TextDirection.rtl,
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
