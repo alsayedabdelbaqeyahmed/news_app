@@ -15,10 +15,10 @@ class HomeCubit extends Cubit<HomeStatus> {
   static HomeCubit get(context) => BlocProvider.of(context);
 
   int currentIndex = 0;
-  List<Widget> pages = const [
-    BuisnessScreen(),
-    ScienceScreen(),
-    SportsScreen(),
+  List<Widget> pages = [
+    const BuisnessScreen(),
+    const ScienceScreen(),
+    const SportsScreen(),
     SearchScreen(),
   ];
 

@@ -17,17 +17,13 @@ class MyHomePage extends StatelessWidget {
               appBar: AppBar(
                 title: Text(cubit.tittles[cubit.currentIndex]),
                 actions: [
-                  IconButton(
-                    padding:
-                        EdgeInsetsDirectional.only(end: size.maxWidth * 0.04),
-                    onPressed: () {
-                      cubit.currentIndex = 4;
-                    },
-                    icon: const Icon(
-                      Icons.search,
+                  Padding(
+                    padding: EdgeInsetsDirectional.only(
+                      start: size.maxWidth * 0.02,
+                      end: size.maxWidth * 0.05,
                     ),
+                    child: cubit.changeTheme(context),
                   ),
-                  cubit.changeTheme(context),
                 ],
               ),
               bottomNavigationBar: BottomNavigationBar(
@@ -48,7 +44,7 @@ class MyHomePage extends StatelessWidget {
                     label: 'Sports',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.settings),
+                    icon: Icon(Icons.search),
                     label: 'Search',
                   ),
                 ],

@@ -17,9 +17,16 @@ class DioHelper {
     String? path,
     Map<String, dynamic>? map,
   }) async {
-    return await _dio!.get(
+    return await _dio!
+        .get(
       path!,
       queryParameters: map,
+    )
+        .catchError(
+      (e) {
+        print(e.toString());
+        throw (e.toString());
+      },
     );
   }
 }

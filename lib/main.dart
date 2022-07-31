@@ -6,6 +6,7 @@ import 'package:news_app/controller/buisness_bloc/buisness_cubit.dart';
 import 'package:news_app/controller/home_bloc/home_bloc.dart';
 import 'package:news_app/controller/home_bloc/home_status.dart';
 import 'package:news_app/controller/science_bloc.dart/science_cubit.dart';
+import 'package:news_app/controller/search_bloc/search_cubit.dart';
 import 'package:news_app/controller/sports_bloc.dart/sport_cubit.dart';
 import 'package:news_app/model/dio_helper/dio_helper.dart';
 import 'package:news_app/model/shared_pref_helper/shared_pref_helper.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => BuisnessCubit()..getBuisnessNews()),
         BlocProvider(create: (context) => ScienceCubit()..getScienceNews()),
-        BlocProvider(create: ((context) => SportCubit()..getSportNews()))
+        BlocProvider(create: ((context) => SportCubit()..getSportNews())),
+        BlocProvider(create: ((context) => SearchCubit()))
       ],
       child: BlocConsumer<HomeCubit, HomeStatus>(
           listener: (context, state) {},
